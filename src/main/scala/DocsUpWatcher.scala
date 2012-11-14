@@ -2,7 +2,11 @@ import scala.xml.{XML, Elem}
 
 object DocsUpWatcher extends App {
 
-  val watchedLinkPrefixes = io.Source.fromFile("watchedLinkPrefixes.txt").getLines.toList
+  val watchedLinkPrefixes =
+    io.Source.fromFile("watchedLinkPrefixes.txt")
+      .getLines
+      .toList
+      .filterNot(_ == "")
 
   val xmlData: Elem = XML.loadFile("RSSFeed.xml")
 
