@@ -6,6 +6,8 @@ import org.joda.time.format.ISODateTimeFormat
 
 object DocsUpWatcher extends App {
   val feedUrl = new URL("http://docs-up.com/RSSFeed")
+  val quoteFetcher = new QuoteFetcher
+  lazy val quoteOpt = quoteFetcher.getQuote
 
   val watchedLinkPrefixes =
     io.Source.fromFile("watchedLinkPrefixes.txt")
@@ -39,4 +41,6 @@ object DocsUpWatcher extends App {
   }
 
   links foreach println
+  println("\n\n")
+  quoteOpt foreach println
 }
