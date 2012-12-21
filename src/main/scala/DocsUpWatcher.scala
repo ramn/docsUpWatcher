@@ -40,7 +40,9 @@ object DocsUpWatcher extends App {
     format.parseDateTime(dateStr)
   }
 
-  links foreach println
-  println("\n\n")
-  quoteOpt foreach println
+  if (!links.isEmpty) {
+    links foreach println
+    println("\n\n")
+    quoteOpt foreach println
+  }
 }
